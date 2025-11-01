@@ -11,8 +11,7 @@ import (
 func main() {
 	bookRepo := repositories.NewInMemoryBookRepository()
 	bookHandler := handlers.NewBookHandler(bookRepo)
-	//routes.SetupPingRoute()
 	routes.SetupBookRoutes(bookHandler)
 	log.Println("Server is running on port 3030")
-	http.ListenAndServe(":3030", nil)
+	log.Fatal(http.ListenAndServe(":3030", nil))
 }
